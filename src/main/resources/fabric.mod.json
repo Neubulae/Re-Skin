@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "reskin",
   "version": "${version}",
-
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Re:Skin",
+  "description": "A skin loading mod for role plays and HD skins.",
   "authors": [
-    "Me!"
+    "sekwah41"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/re-skin",
+    "sources": "https://github.com/sekwah41/Re-Skin",
+    "issues": "https://github.com/sekwah41/Re-Skin/issues"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "",
+  "icon": "assets/reskin/icon.png",
 
   "environment": "*",
   "entrypoints": {
@@ -32,6 +32,5 @@
     "minecraft": "1.15.x"
   },
   "suggests": {
-    "flamingo": "*"
   }
 }
