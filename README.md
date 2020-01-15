@@ -8,4 +8,5 @@ Setup
 ./gradlew idea
 ```
 
-This version does not currently work. I am still debating forge vs fabric.
+Fabric references  
+https://fabricmc.net/wiki/doku.php
