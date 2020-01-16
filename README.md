@@ -14,9 +14,11 @@ Setup
 
 https://fabricmc.net/wiki/doku.php
 
+https://github.com/SpongePowered/Mixin/wiki
+
 [Hotswap mixins guide](https://fabricmc.net/wiki/tutorial:mixin_hotswaps)
 
 These two can't be used together tho ive added these here just in case other devs haven't seen either of these.
 
-Hotswapping that I didn't know existed for far too long  
+Hotswapping that I didn't know existed for far too long
 https://dcevm.github.io/
