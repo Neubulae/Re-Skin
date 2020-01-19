@@ -6,4 +6,8 @@ public interface IReSkinPlayer {
 
     String getSkin();
 
+    void setSteve(boolean isSteve);
+
+    boolean isSteve();
+
 }

@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PlayerEntityMixin extends LivingEntity implements IReSkinPlayer {
 
     private static final TrackedData<String> RESKIN_LOC;
+    private static final TrackedData<Boolean> RESKIN_IS_STEVE;
 
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> type, World world) {
         super(type, world);
@@ -33,14 +34,19 @@ public class PlayerEntityMixin extends LivingEntity implements IReSkinPlayer {
 
     @Inject(method = "readCustomDataFromTag", at=@At("TAIL"))
     public void readCustomDataFromTag(CompoundTag tag, CallbackInfo ci) {
-        if(tag.contains("ReSkinLoc", 8)) {
+        if(tag.contains("ReSkinLoc")) {
             this.setSkin(tag.getString("ReSkinLoc"));
+        }
+
+        if(tag.contains("ReSkinIsSteve")) {
+            this.setSteve(tag.getBoolean("ReSkinIsSteve"));
         }
     }
 
     @Inject(method = "writeCustomDataToTag", at=@At("TAIL"))
     public void writeCustomDataToTag(CompoundTag tag, CallbackInfo ci) {
         tag.putString("ReSkinLoc", this.getSkin());
+        tag.putBoolean("ReSkinIsSteve", this.isSteve());
     }
 
     @Override
@@ -53,8 +59,19 @@ public class PlayerEntityMixin extends LivingEntity implements IReSkinPlayer {
         return this.getDataTracker().get(RESKIN_LOC);
     }
 
+    @Override
+    public void setSteve(boolean isSteve) {
+        this.getDataTracker().set(RESKIN_IS_STEVE, isSteve);
+    }
+
+    @Override
+    public boolean isSteve() {
+        return this.getDataTracker().get(RESKIN_IS_STEVE);
+    }
+
     static {
         RESKIN_LOC = DataTracker.registerData(LivingEntity.class, TrackedDataHandlerRegistry.STRING);
+        RESKIN_IS_STEVE = DataTracker.registerData(LivingEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
     // Useless methods after this

@@ -26,20 +26,22 @@ public class SetSkinCommand {
                                             ServerPlayerEntity targetPlayer = getPlayer(ctx, "targets");
                                             Text url = MessageArgumentType.getMessage(ctx, "skinurl");
                                             return execute(ctx.getSource(), targetPlayer, url);
-                                        }))).then(argument("skinurl", MessageArgumentType.message()).executes(ctx -> {
+                                        })))
+                        .then(argument("skinurl", MessageArgumentType.message())
+                                .executes(ctx -> {
                     ServerPlayerEntity entity = ctx.getSource().getPlayer();
                     Text url = MessageArgumentType.getMessage(ctx, "skinurl");
                     return execute(ctx.getSource(), entity, url);
                 })));
     }
 
-    private static int execute(ServerCommandSource source, ServerPlayerEntity targets, Text skinUrl) {
-        if(targets == null) {
+    private static int execute(ServerCommandSource source, ServerPlayerEntity target, Text skinUrl) {
+        if(target == null) {
             return -1;
         }
 
-        source.sendFeedback(new TranslatableText("setskin.setplayer", targets.getDisplayName(), skinUrl), false);
-        System.out.printf("%s %s %s%n", source, targets, skinUrl);
+        source.sendFeedback(new TranslatableText("setskin.setplayer", target.getDisplayName(), skinUrl), false);
+
         return Command.SINGLE_SUCCESS;
     }
 }
